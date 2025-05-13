@@ -220,7 +220,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Error handler
+// Error handleradfadfaddsa
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render('home', {
