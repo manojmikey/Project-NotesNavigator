@@ -1,25 +1,11 @@
-const mongoose = require("mongoose");
-const connect = mongoose.connect("mongodb://localhost:27017/database");
+const mongoose = require('mongoose');
+require('dotenv').config(); // Loads variables from .env
 
-connect.then(() => {
-  console.log("Database connected Successfully");
+const mongoURI = process.env.MONGO_URL;
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.catch(() => {
-  console.log("Database cannot be connected");
-});
-
-
-const Schema = new mongoose.Schema({
-  rollnumber : {
-    type : String,
-    require : true
-  },
-  password : {
-    type : String,
-    require : true 
-  }
-});
-
-const collection = new mongoose.model("users", Schema);
-
-module.exports = collection;
+.then(() => console.log('✅ MongoDB connected'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
