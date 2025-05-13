@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR ALPHA - CMRIT</title>
+    <link rel="stylesheet" href="/homestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+<header class="header-container">
+    <div class="title-section">
+        <h1>CMR Institute Of Technology</h1>
+    </div>
+
+    <div class="nav-section">
+        <nav>
+            <ul>
+                <li><i class="fas fa-user profile-icon"></i></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<form action="/home" method="POST">
+    <div class="upperportion-container">
+        <div class="form-row">
+            <div class="dropdown-container">
+                <label class="dropdown-label">Select your branch:</label>
+                <select name="branch" required>
+                    <option value="">Select an option</option>
+                    <option for="branch" name ="branch" value="ECE">ECE</option>
+                    <option for="branch" name ="branch" value="CSE">CSE</option>
+                    <option for="branch" name ="branch" value="AI&ML">AI&ML</option>
+                    <option value="DS">DS</option>
+                </select>
+            </div>
+
+            <div class="dropdown-container">
+                <label class="dropdown-label">Select your year:</label>
+                <select name="year" required>
+                    <option value="">Select an option</option>
+                    <option for="year" name="year" value="1">1st year</option>
+                    <option for="year" name="year" value="2">2nd year</option>
+                    <option for="year" name="year" value="3">3rd year</option>
+                    <option for="year" name="year" value="4">4th year</option>
+                </select>
+            </div>
+
+            <div class="dropdown-container">
+                <label class="dropdown-label">Select your sem:</label>
+                <select name="sem" required>
+                    <option value="">Select an option</option>
+                    <option for="sem1" name="sem1"value="sem1">1</option>
+                    <option for="sem2" name="sem2"value="sem2">2</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+<div class="content-container">
+
+   
+        <div class="lefttable">
+            <table>
+                <tr><th>SEM1</th></tr>
+                <tr><td><button type="submit" name="subject" value="subject1"class="small-button">Subject1</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject2"class="small-button">Subject2</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject3"class="small-button">Subject3</button></td></tr>
+                <tr><td><button type="submit" name="subject" value="subject4"class="small-button">Subject4</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject5"class="small-button">Subject5</button></td></tr>
+
+                <tr><th>SEM2</th></tr>
+               <tr><td><button type="submit" name="subject" value="subject1"class="small-button">Subject1</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject2"class="small-button">Subject2</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject3"class="small-button">Subject3</button></td></tr>
+                <tr><td><button type="submit" name="subject" value="subject4"class="small-button">Subject4</button></td></tr>
+                 <tr><td><button type="submit" name="subject" value="subject5"class="small-button">Subject5</button></td></tr>
+
+
+            </table>
+        </div>
+
+
+        <div class="pdf-display">
+        <!-- PDF List Section -->
+        
+            <% if (pdfFiles && pdfFiles.length) { %>
+                <% pdfFiles.forEach(file => { %>
+                    <div class="pdf-item <%= currentPdf === file ? 'active' : '' %>">
+                        <a href="/view-pdf/<%= file %>"><%= file %></a>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p><%=  "No PDF files found" %></p>
+            <% } %>
+        
+        </div>
+        
+        <!-- PDF Viewer Section -->
+        <div class="pdf-viewer">
+            <% if (pdfData) { %>
+                <embed src="data:application/pdf;base64,<%= pdfData %>" 
+                       width="100%" 
+                       height="600px" 
+                       type="application/pdf" />
+            <% } else { %>
+                <p>Select a PDF to view</p>
+            <% } %>
+        </div>
+    
+    </div>
+</form>
+
+</body>
+</html>

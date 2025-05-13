@@ -1,0 +1,119 @@
+
+        /* General Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            display: block;
+            width: 100%;
+            margin: 0 auto 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #575757; /* Background color of the navbar */
+    display: flex;
+    justify-content: space-between; /* Align items on left and right */
+    align-items: center;
+    padding: 10px 20px; /* Add spacing inside the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for visibility */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-outline-success {
+    background-color: #28a745; /* Green background for the button */
+    color: white;
+    border: none;
+    padding: 8px 20px; /* Adjust padding for the button size */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners for the button */
+    margin-left: auto; 
+    
+}
+
+.btn-outline-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+.bt {
+    position: absolute; /* Position the element relative to the page */
+    top: 5px; /* Distance from the top */
+    left: 1150px; /* Distance from the left */
+    background-color: #28a745; /* Green background for the button */
+    color: white; /* Text color */
+    padding: 2px 8px; /* Further reduced padding */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center the text */
+    cursor: pointer; /* Show pointer on hover */
+    font-size: 12px; /* Smaller font size */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.bt:hover {
+    background-color: #218838; /* Darker shade on hover */
+}

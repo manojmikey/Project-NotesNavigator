@@ -1,0 +1,274 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Lighter Overlay Effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+}
+
+/* Header Styles */
+.header-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-section {
+    background-color: hsl(136, 70%, 50%);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.title-section h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.nav-section {
+    background-color: #666;
+    padding: 15px 20px;
+}
+
+.nav-section nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.nav-section nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-section nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-icon {
+    color: white;
+    font-size: 18px;
+}
+
+/* Form Styles */
+.upperportion-container {
+    margin: 30px auto;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-container label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.dropdown-container select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-width: 180px;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+.small-button {
+    color:black;
+  padding: 0;            /* Removes all inner spacing */
+  font-size: 15px;       /* Font size */
+  border: none;          /* Optional: Remove default border */
+  background: none;      /* Optional: Remove background */
+  cursor: pointer;       /* Ensures it still looks clickable */
+}
+.small-button:hover {
+    background-color: white;
+}
+
+
+
+/* Content Container Styles */
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left Table Styles */
+.lefttable {
+    flex: 1;
+    min-width: 250px;
+}
+
+.lefttable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lefttable th, .lefttable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.lefttable th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* PDF Display Styles */
+.pdf-display {
+    flex: 2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    min-height: 500px;
+    overflow-y: auto;
+}
+
+.pdf-display .pdf-item {
+    margin: 10px 0;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.pdf-display .pdf-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.pdf-display .pdf-item.active a {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.pdf-display .pdf-item:hover {
+    background-color: #eee;
+}
+
+/* PDF Viewer Styles */
+.pdf-viewer {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* PDF Button (optional use) */
+.pdf-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pdf-button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-section nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .dropdown-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .content-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .lefttable {
+        margin-bottom: 20px;
+    }
+
+    .pdf-display {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-section h1 {
+        font-size: 22px;
+    }
+
+    .nav-section nav ul li a {
+        font-size: 16px;
+    }
+
+    .dropdown-container select {
+        width: 100%;
+    }
+
+    .small-button {
+        font-size: 13px;
+    }
+}
