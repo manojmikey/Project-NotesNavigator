@@ -2,7 +2,7 @@ const exp = require("express");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const fs = require('fs');
-const collection = require("./config");
+const User = require("./config"); // Imported updated User model
 const session = require('express-session');
 
 const app = exp();
@@ -10,7 +10,6 @@ const app = exp();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
-// Serve static files from the 'public' folder
 app.use(exp.static(path.join(__dirname, '../public')));
 app.use(exp.urlencoded({ extended: true }));
 
@@ -19,10 +18,9 @@ app.use(session({
   secret: 'secret_key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // set to true if using HTTPS
+  cookie: { secure: false }
 }));
 
-// Helper function to sanitize paths
 function sanitizePath(input) {
   return input.replace(/\.\./g, '').replace(/\//g, '');
 }
@@ -31,9 +29,11 @@ function sanitizePath(input) {
 app.get('/', (req, res) => {
   res.render("signup");
 });
+
 app.get('/signup', (req,res) => {
   res.render("signup");
-})
+});
+
 app.get('/login', (req, res) => {
   res.render("login");
 });
@@ -46,15 +46,14 @@ app.post('/home', async (req, res) => {
     sub: sanitizePath(req.body.subject)
   };
 
-  // Store in session
   req.session.branch = requestedpath.branch;
   req.session.year = requestedpath.year;
   req.session.sem = requestedpath.sem;
 
   const dirPath = path.join('public', requestedpath.branch, 
-                          `${requestedpath.year}bpdfs`, 
-                          requestedpath.sem, 
-                          requestedpath.sub);
+                            `${requestedpath.year}bpdfs`, 
+                            requestedpath.sem, 
+                            requestedpath.sub);
   req.session.rpath = dirPath;
 
   try {
@@ -157,16 +156,16 @@ app.post('/signup', async (req, res) => {
   };
 
   try {
-    const userexists = await collection.findOne({ rollnumber: data.rollnumber });
+    const userexists = await User.findOne({ rollnumber: data.rollnumber });
     if (userexists) {
-     res.send("user exists try login");
+      return res.send("User exists, try login.");
     }
 
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(data.password, saltRounds);
     data.password = hashedPassword;
     
-    await collection.insertMany(data);
+    await User.create(data);
     res.render("home", { 
       pdfFiles: [],
       pdfData: null,
@@ -196,7 +195,7 @@ app.post('/login', async (req, res) => {
   };
 
   try {
-    const checkuser = await collection.findOne({ rollnumber: data.rollnumber });
+    const checkuser = await User.findOne({ rollnumber: data.rollnumber });
     if (!checkuser) {
       return res.render("login", { error: "User not found" });
     }
@@ -221,7 +220,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Error handling middleware
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).render('home', {
